@@ -2,7 +2,6 @@ import { useEffect, useMemo, useState } from "react";
 import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 
 import Login from "./pages/Login";
-import Register from "./pages/Register";
 import Chat from "./pages/Chat";
 import Admin from "./pages/Admin";
 
@@ -52,22 +51,22 @@ function V1Notice({ onClose }) {
   return (
     <div className="notice-backdrop" role="presentation">
       <div className="notice-modal" role="dialog" aria-modal="true" aria-labelledby="baithak-v1-title">
-        <p className="eyebrow">Baithak v1 Notice</p>
-        <h2 id="baithak-v1-title">Use responsibly. Gossip gently.</h2>
+        <p className="eyebrow">Baithak v1</p>
+        <h2 id="baithak-v1-title">A calm room works best with kind voices.</h2>
         <p>
-          This is the first public baithak. It chats, uploads, vibes, and occasionally acts
-          like it skipped one engineering stand-up too many.
+          This first public Baithak is ready for rooms, direct messages, uploads, presence,
+          and notifications while the foundation continues to mature.
         </p>
         <p>
-          The more battle-hardened, fully polished, fully secure elder sibling is on the way.
-          Until then: please proceed with charm, caution, and low drama.
+          Keep the conversation respectful, share thoughtfully, and let the space stay easy
+          for everyone gathered here.
         </p>
         <div className="notice-actions">
           <button type="button" className="secondary-button" onClick={onClose}>
-            I Shall Behave
+            Got it
           </button>
           <button type="button" className="primary-button" onClick={onClose}>
-            Proceed Gently
+            Enter Baithak
           </button>
         </div>
       </div>
@@ -117,11 +116,7 @@ export default function App() {
         />
         <Route
           path="/register"
-          element={
-            <PublicRoute>
-              <Register />
-            </PublicRoute>
-          }
+          element={<Navigate to="/login" replace />}
         />
         <Route element={<ProtectedRoute />}>
           <Route path="/chat" element={<Chat theme={theme} onToggleTheme={toggleTheme} />} />
